@@ -1,19 +1,18 @@
-//
-//  ContentView.swift
-//  Navigation
-//
-//  Created by Jakir Hossain on 27/9/23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    let numbers = ["One", "Two", "Three", "Four", "Five"]
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            NavigationStack {
+                List(numbers, id: \.self){ item in
+                    NavigationLink(
+                        destination: DetailsView(item: item)) {
+                        ListRowView(item: item)
+                    }
+                }
+            }
         }
         .padding()
     }
